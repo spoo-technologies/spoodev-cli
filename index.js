@@ -34,7 +34,7 @@ const cli = {
 
             axios({
                     method: "post",
-                    url: (host || 'https://spoo.app') + '/webhosting/upload/client/' + localStorage.getItem('clientId') + '/app/' + app + '?token=' + localStorage.getItem('accessToken'),
+                    url: (host || 'https://spoo.app') + '/upload/client/' + localStorage.getItem('clientId') + '/app/' + app + '?token=' + localStorage.getItem('accessToken'),
                     headers: form_data.getHeaders(),
                     data: form_data,
 
@@ -98,7 +98,7 @@ const cli = {
     },
 
     check_app: function(app, host, callback) {
-        axios.get( (host || 'https://spoo.app') +'/webhosting/check_app/' + app)
+        axios.get( (host || 'https://spoo.app') +'/check_app/' + app)
             .then(response => {
                 if (response.status == 200) callback(response.data, false);
                 else error(false);
