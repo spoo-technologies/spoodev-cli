@@ -121,7 +121,7 @@ program
 
         switch (type) {
             case 'arch':
-                cli.push(args.app, args.zip, host, function(data, err) {
+                cli.push(args.app, args.zip, args.host, function(data, err) {
                     if (err) {
                         console.log("Upload failed");
                         console.log(data);
@@ -131,7 +131,7 @@ program
                 });
                 break;
             case 'dir':
-                cli.compress(args.app, args.directory, host, function(data, err) {
+                cli.compress(args.app, args.directory, args.host, function(data, err) {
                     if (err) {
                         console.log("Upload failed");
                         console.log(data);
@@ -155,7 +155,7 @@ program
     .action(function(args) {
 
 
-        cli.auth(args.client, args.app, args.username, args.password, args.host function(data, err) {
+        cli.auth(args.client, args.app, args.username, args.password, args.host, function(data, err) {
             if (err) {
                 console.log("Login failed");
                 console.log(data);
@@ -178,7 +178,7 @@ program
     .description('Check if an app is published')
     .action(function(app, args) {
 
-        cli.check_app(app, args.host function(data, err) {
+        cli.check_app(app, args.host, function(data, err) {
             if (err) {
 
                 console.log(data);
