@@ -31,7 +31,7 @@ const cli = {
 
             var form_data = new FormData();
             form_data.append("archive", fs.createReadStream(archive));
-
+            console.log('url', (host || 'https://spoo.app') + '/upload/client/' + localStorage.getItem('clientId') + '/app/' + app + '?token=' + localStorage.getItem('accessToken'));
             axios({
                     method: "post",
                     url: (host || 'https://spoo.app') + '/upload/client/' + localStorage.getItem('clientId') + '/app/' + app + '?token=' + localStorage.getItem('accessToken'),
@@ -73,7 +73,7 @@ const cli = {
     },
 
     authenticated: function(client, callback) {
-        axios.get('https://spoo.io/api/client/' + client + '/authenticated?token=' + localStorage.getItem('accessToken'))
+        axios.get('https://spoo.rocks/api/client/' + client + '/authenticated?token=' + localStorage.getItem('accessToken'))
             .then(response => {
                 if (response.status == 200) callback(response.data, false);
                 else error(false);
@@ -84,7 +84,7 @@ const cli = {
     },
 
     auth: function(client, app, username, password, host, callback) {
-        axios.post('https://spoo.io/api/client/' + client + '/app/' + app + '/auth', {
+        axios.post('https://spoo.rocks/api/client/' + client + '/app/' + app + '/auth', {
                 username: username,
                 password: password
             })
